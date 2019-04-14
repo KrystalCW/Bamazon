@@ -27,7 +27,7 @@ You should see a list of available products.
 You will then be prompted to enter the ID of the item you would like to purchase and how many items.
 When finished, the item you purchased and the new quantity will display.
 
-![] (https://github.com/KrystalCW/Bamazon/blob/master/images/gif-product-display.gif)
+![](https://github.com/KrystalCW/Bamazon/blob/master/images/gif-product-display.gif)
 
 ### BamazonManager.js
 
@@ -47,4 +47,4 @@ Users will then be prompted to select an option of what they would like to do:
 * Add New Product
 * Exit
 
-![] (https://github.com/KrystalCW/Bamazon/blob/master/images/gif-manager-display.gif)
+![](https://github.com/KrystalCW/Bamazon/blob/master/images/gif-manager-display.gif)
