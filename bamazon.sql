@@ -1,14 +1,22 @@
-DROP DATABASE IF EXISTS greatBay_DB;
-CREATE DATABASE greatBay_DB;
+DROP DATABASE IF EXISTS storefront_db;
+CREATE DATABASE storefront_db;
 
-USE greatBay_DB;
+USE storefront_db;
 
-CREATE TABLE auctions(
+CREATE TABLE products(
   id INT NOT NULL AUTO_INCREMENT,
-  item_name VARCHAR(100) NOT NULL,
-  category VARCHAR(45) NOT NULL,
-  starting_bid INT default 0,
-  highest_bid INT default 0,
+  product_name VARCHAR(100) NOT NULL,
+  department_name VARCHAR(45) NOT NULL,
+  price INT default 0,
+  stock_quantity INT default 0,
   PRIMARY KEY (id)
 );
 
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("black-ink ballpoint pens", "office supplies", 2.5, 50);
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("scissors", "office supplies", 5, 20);
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("oven mitt", "kitchen goods", 10, 30);

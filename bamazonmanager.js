@@ -99,20 +99,30 @@ function addInventory() {
     ]).then((response) => {
         product = parseInt(response.product);
         amount = parseInt(response.itemsAdded);
-        connection.query("UPDATE products SET ? WHERE ?",
+        connection.query("SELECT * from products WHERE ?",
         [
-            {
-                stock_quantity: amount
-            },
             {
                 id: product
             }
         ],
-        function(err) {
+        function(err, response) {
             if (err) throw err;
-            readAffectedRow(product);
-        }
-        )
+            quantity = parseInt(response[0].stock_quantity);
+            connection.query("UPDATE products SET ? WHERE ?",
+                [
+                    {
+                        stock_quantity: (quantity + amount)
+                    },
+                    {
+                        id: product
+                    }
+                ],
+                function(err) {
+                    if (err) throw err;
+                    readAffectedRow(product);
+                }
+                )
+        })
     })
 }
 

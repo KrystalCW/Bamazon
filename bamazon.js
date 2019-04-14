@@ -69,6 +69,9 @@ function evaluateStock() {
     }, function(err, data) {
         if (err) throw err;
         quantity = parseInt(data[0].stock_quantity);
+        price = parseFloat(data[0].price);
+        department = data[0].department_name;
+        sales = parseFloat(data[0].product_sales);
         if (amount > quantity) {
             console.log("Sorry, we don't have enough for that order. Please try again" + "\n\n");
             displayProducts();
@@ -85,7 +88,8 @@ function makeAPurchase() {
     connection.query("UPDATE products SET ? WHERE ?",
     [
         {
-            stock_quantity: quantity
+            stock_quantity: quantity,
+            product_sales: sales + (amount * price)
         },
         {
             id: userchoice
@@ -96,6 +100,15 @@ function makeAPurchase() {
         readAffectedRow();
     }
     )
+    // connection.query("UPDATE departments SET ? WHERE ?",
+    // [
+    //     {
+    //         overhead_costs: overhead_costs + (quantity * price),
+    //     },
+    //     {
+    //         department_name: department
+    //     }
+    // ])
 }
 
 function readAffectedRow() {
